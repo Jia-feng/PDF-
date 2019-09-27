@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文档预览</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/layui/css/layui.css">
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+  
+  </style>
+</head>
+<body style="padding-bottom: 0px!important;">
+  <div class="pdf_box">
+    <div class="left">
+      <div class="btn">
+        收起列表
+      </div>
+      <div class="pdf_list">
+        <ul>
+          <li class="active">
+            <a href="javascript:;" links="11111"><span>(1)</span>文档1文档1文档1文档1文档1文档1文档1文档1文档1</a>
+          </li>
+          <li>
+            <a href="javascript:;" links="222"><span>(2)</span>文档1</a>
+          </li>
+          <li>
+            <a href="javascript:;" links="333"><span>(3)</span>文档1</a>
+          </li>
+          <li>
+            <a href="javascript:;" links="444"><span>(4)</span>文档1</a>
+          </li>
+          <li>
+            <a href="javascript:;" links="5555"><span>(5)</span>文档1</a>
+          </li>
+          <li>
+            <a href="javascript:;" links="6666"><span>(6)</span>文档1</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="right isShow">
+      <iframe src="pdf-pc.html" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script>
+    function iframeWH(){
+      var hei = $(window).innerHeight();
+      $(".right iframe,.right,left").css("height",hei+'px');
+    }
+    iframeWH();
+    $(function(){
+      $(".btn").click(function(){
+        if($(".pdf_box").hasClass("pdf_show2")){
+          $(".pdf_box").removeClass("pdf_show2");
+          $(this).html("收起列表");
+        }else{
+          $(".pdf_box").addClass("pdf_show2");
+          $(this).html("展开<br>列表");
+        }
+      });
+      $("body").on("click",".pdf_list ul li",function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $("iframe").attr("src","pdf-pc.html?id="+$(this).find("a").attr("links"));
+      })
+    })
+  </script>
+</body>
+</html>
